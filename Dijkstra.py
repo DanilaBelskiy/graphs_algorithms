@@ -12,7 +12,7 @@ def dijkstra(adjacency_matrix: list, start_node: int = 0):
 
         node.sort_connections()
 
-        print_graph(nodes)
+        #print_graph(nodes)
 
         for i in node.connections.keys():
             if not nodes_arr[i.name].is_closed():

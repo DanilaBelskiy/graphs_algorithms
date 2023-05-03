@@ -1,7 +1,8 @@
 from node import Node
+import numpy
 
 
-def make_graph(edges: list, start_node: int) -> list:
+def make_graph(edges: list, start_node: int = 0) -> list:
 
     def inf():
         return float('inf')
@@ -22,8 +23,18 @@ def make_graph(edges: list, start_node: int) -> list:
 
 
 def make_adjacency_matrix(graph: list):
+
+    adjacency_matrix = []
     for i in range(len(graph)):
-        pass
+        adjacency_matrix.append([])
+        for j in range(len(graph)):
+            adjacency_matrix[i].append('')
+
+    for i in range(len(graph)):
+        for j in graph[i].connections.keys():
+            adjacency_matrix[i][j.name] = int(graph[i].connections[j])
+
+    return adjacency_matrix
 
 
 def change_weight_of_node(node_from: Node, node_to: Node):
@@ -35,3 +46,9 @@ def print_graph(nodes):
     for i in range(len(nodes)):
         nodes[i].print_node()
     print("--------------------------------------------------")
+
+
+def print_adjacency_matrix(matrix):
+    for i in range(len(matrix)):
+        print(matrix[i])
+    print()
