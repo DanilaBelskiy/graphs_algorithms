@@ -42,6 +42,10 @@ def change_weight_of_node(node_from: Node, node_to: Node):
         node_to.weight = node_from.connections[node_to] + node_from.weight
 
 
+def inf():
+    return float("inf")
+
+
 def print_graph(nodes):
     for i in range(len(nodes)):
         nodes[i].print_node()
