@@ -7,6 +7,10 @@ from Dijkstra import dijkstra
 
 def johnson(adjacency_matrix: list):
 
+    final_matrix = []
+    for i in range(len(adjacency_matrix)):
+        final_matrix.append(adjacency_matrix[i].copy())
+
     for i in range(len(adjacency_matrix)):
         adjacency_matrix[i].append('')
 
@@ -14,10 +18,10 @@ def johnson(adjacency_matrix: list):
     for i in range(len(adjacency_matrix[0])):
         helper.append(0)
 
-    print("1")
-    print_graph(make_graph(adjacency_matrix))
-
     adjacency_matrix.append(helper)
+
+    print("1")
+    print_adjacency_matrix(adjacency_matrix)
 
     nodes = bellman_ford(adjacency_matrix, len(adjacency_matrix)-1)
 
@@ -36,8 +40,6 @@ def johnson(adjacency_matrix: list):
         nodes[i].delete_connection(name)
     nodes.pop(name)
 
-    final_matrix = adjacency_matrix
-
     for i in range(len(nodes)):
         nodes_copy = nodes
         graph = dijkstra(make_adjacency_matrix(nodes_copy), i)
@@ -47,4 +49,9 @@ def johnson(adjacency_matrix: list):
 
     print_adjacency_matrix(final_matrix)
 
-    return nodes
+    for i in range(len(final_matrix)):
+        for j in range(len(final_matrix[0])):
+            #if type(final_matrix[i][j]) != str:
+            final_matrix[i][j] = final_matrix[i][j] - nodes[i].weight + nodes[j].weight
+
+    return final_matrix

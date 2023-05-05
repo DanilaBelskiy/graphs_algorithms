@@ -6,8 +6,11 @@ class Node:
         self.close_status = False
         self.connections = {}
 
-    def change_weight(self, new_weight):
-        if new_weight < self.weight:
+    def change_weight(self, new_weight, johnson_flag: bool = False):
+        if not johnson_flag:
+            if new_weight < self.weight:
+                self.weight = new_weight
+        else:
             self.weight = new_weight
 
     def add_connection(self, node_name, weight):
