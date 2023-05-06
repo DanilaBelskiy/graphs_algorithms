@@ -8,4 +8,4 @@ from adjacency_matrices import adjacency_matrix1, adjacency_matrix2, adjacency_m
 
 from work_with_graph import print_graph, print_adjacency_matrix
 
-print_graph(dijkstra(adjacency_matrix4, 2))
+print_graph(dijkstra(adjacency_matrix7))
