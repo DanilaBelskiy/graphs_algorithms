@@ -1,18 +1,18 @@
 from pyvis.network import Network
+from node import Node
 
-g = Network(notebook=True)
 
-g.add_nodes([1, 2, 3],
-            value=[10, 10, 10],
-            title=['I am node 1', 'node 2 here', 'and im node 3'],
-            x=[50, 100, 150],
-            y=[100, 100, 100],
-            label=['1', '2', '3'],
-            color=['red', 'green', 'blue'])
+def visual_graph(graph: list, name: str = 'basic.html'):
 
-g.add_edge(1, 2)
-g.add_edge(3, 2)
+    net = Network(notebook=True)
 
-g.toggle_physics(True)
+    for i in range(len(graph)):
+        net.add_node(graph[i].name, size=20, value=graph[i].weight, label=str(graph[i].name),
+                     title=str(graph[i].weight), x=50, y=100)
 
-g.show("basic.html")
+    for i in range(len(graph)):
+        for j in graph[i].connections.keys():
+            net.add_edge(graph[i].name, j.name, weight=graph[i].connections[j], label=str(graph[i].connections[j]))
+
+    net.toggle_physics(True)
+    net.show(name)
