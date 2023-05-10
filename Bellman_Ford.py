@@ -7,10 +7,14 @@ def bellman_ford(adjacency_matrix: list, start_node: int = 0):
 
     print_graph(nodes)
 
+    nodes[start_node].set_path([nodes[start_node].name])
+
     for i in range(len(nodes) - 1):
         for j in range(len(nodes)):
             for k in nodes[j].connections.keys():
-                change_weight_of_node(nodes[j], nodes[k.name])
+                if nodes[j].weight + nodes[j].connections[k] < k.weight:
+                    change_weight_of_node(nodes[j], nodes[k.name])
+                    nodes[k.name].set_path(nodes[j].path + [nodes[k.name].name])
 
     is_infinite_loop = False
 

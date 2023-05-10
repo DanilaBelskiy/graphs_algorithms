@@ -9,4 +9,4 @@ from adjacency_matrices import adjacency_matrix1, adjacency_matrix2, adjacency_m
 from work_with_graph import print_graph, print_adjacency_matrix
 from visual import visual_graph
 
-visual_graph(dijkstra(adjacency_matrix4, 4), 4, 8, "4.html")
+visual_graph(bellman_ford(adjacency_matrix4, 4), 4, 8, "4.html")
