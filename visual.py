@@ -8,7 +8,12 @@ def visual_graph(graph: list, name: str = 'basic.html'):
 
     for i in range(len(graph)):
         net.add_node(graph[i].name, size=20, value=graph[i].weight, label=str(graph[i].name),
-                     title=str(graph[i].weight), x=50, y=100)
+                     title=str(graph[i].weight) + " " + str(graph[i].path), x=50, y=100)
+
+    for i in range(len(net.nodes)):
+        if net.nodes[i]['value'] == 0:
+            net.nodes[i]['color'] = 'red'
+            break
 
     for i in range(len(graph)):
         for j in graph[i].connections.keys():

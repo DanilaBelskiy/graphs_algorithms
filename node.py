@@ -3,6 +3,7 @@ class Node:
     def __init__(self, name, weight):
         self.name = name
         self.weight = weight
+        self.path = []
         self.close_status = False
         self.connections = {}
 
@@ -30,6 +31,9 @@ class Node:
 
     def amount_of_connections(self):
         return len(self.connections)
+
+    def set_path(self, new_path: list):
+        self.path = new_path
 
     def is_closed(self):
         return self.close_status

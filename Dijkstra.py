@@ -11,6 +11,7 @@ def dijkstra(adjacency_matrix: list, start_node: int = 0):
 
     def check_nodes(node: Node, nodes_arr, queue: list):
 
+        node.set_path([node.name])
         queue.append(node)
 
         print("Queue: ")
@@ -23,8 +24,9 @@ def dijkstra(adjacency_matrix: list, start_node: int = 0):
             current_node = queue.pop(0)
 
             for i in current_node.connections.keys():
-                #if not nodes_arr[i.name].is_closed():
+                if current_node.weight + current_node.connections[i] < i.weight:
                     change_weight_of_node(current_node, nodes_arr[i.name])
+                    nodes_arr[i.name].set_path(current_node.path + [nodes_arr[i.name].name])
 
             current_node.close()
             current_node.sort_connections()
