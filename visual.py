@@ -2,7 +2,7 @@ from pyvis.network import Network
 from node import Node
 
 
-def visual_graph(graph: list, name: str = 'basic.html'):
+def visual_graph(graph: list, start_node: int = 0, end_node: int = 0, name: str = 'basic.html'):
 
     net = Network(notebook=True)
 
@@ -10,10 +10,11 @@ def visual_graph(graph: list, name: str = 'basic.html'):
         net.add_node(graph[i].name, size=20, value=graph[i].weight, label=str(graph[i].name),
                      title=str(graph[i].weight) + " " + str(graph[i].path), x=50, y=100)
 
-    for i in range(len(net.nodes)):
-        if net.nodes[i]['value'] == 0:
-            net.nodes[i]['color'] = 'red'
-            break
+    net.nodes[start_node]['color'] = 'red'
+    net.nodes[end_node]['color'] = 'green'
+
+    for i in range(1, len(graph[end_node].path)-1):
+        net.nodes[graph[end_node].path[i]]['color'] = 'yellow'
 
     for i in range(len(graph)):
         for j in graph[i].connections.keys():
