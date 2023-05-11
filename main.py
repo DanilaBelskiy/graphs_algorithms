@@ -9,10 +9,29 @@ from adjacency_matrices import adjacency_matrix1, adjacency_matrix2, adjacency_m
 from work_with_graph import print_graph, print_adjacency_matrix
 from visual import visual_graph, visual_matrix_johnson, visual_matrix_floyd
 
-#print_adjacency_matrix(johnson(adjacency_matrix4))
 
-'''distances_matrix, path_matrix, graph = johnson(adjacency_matrix4)
-visual_matrix_johnson(distances_matrix, path_matrix, graph, 0, 5, "4.html")'''
+algorithms = {0: 'Dijkstra', 1: 'Bellman_Ford', 2: 'Johnson', 3: 'Floyd'}
+algorithm = 3
+adjacency_matrix = adjacency_matrix4
+start_node = 0
+end_node = 8
 
-distances_matrix, path_matrix, graph = floyd(adjacency_matrix4)
-visual_matrix_floyd(distances_matrix, path_matrix, graph, 0, 8, "4.html")
+if algorithm == 0:
+
+    graph = dijkstra(adjacency_matrix, start_node)
+    visual_graph(graph, start_node, end_node, "dijkstra.html")
+
+elif algorithm == 1:
+
+    graph = bellman_ford(adjacency_matrix, start_node)
+    visual_graph(graph, start_node, end_node, "bellman_ford.html")
+
+elif algorithm == 2:
+
+    distances_matrix, path_matrix, graph = johnson(adjacency_matrix)
+    visual_matrix_johnson(distances_matrix, path_matrix, graph, start_node, end_node, "johnson.html")
+
+elif algorithm == 3:
+
+    distances_matrix, path_matrix, graph = floyd(adjacency_matrix)
+    visual_matrix_floyd(distances_matrix, path_matrix, graph, start_node, end_node, "floyd.html")
