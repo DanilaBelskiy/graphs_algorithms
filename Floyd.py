@@ -23,22 +23,4 @@ def floyd(adjacency_matrix: list):
                     adjacency_matrix[j][k] = adjacency_matrix[j][i] + adjacency_matrix[i][k]
                     path_arr[j][k] = path_arr[j][i]
 
-    for i in range(len(path_arr)):
-        for j in range(len(path_arr[i])):
-            print(path_arr[i][j], end=' ')
-        print()
-
-    u = 2
-    v = 0
-    path = [u]
-    while u != v:
-        u = path_arr[u][v]
-        path.append(u)
-
-    for i in range(len(path_arr)):
-        for j in range(len(path_arr)):
-            print(path_arr[i][j], end=' ')
-        print()
-    print()
-
     return adjacency_matrix, path_arr, graph_to_return

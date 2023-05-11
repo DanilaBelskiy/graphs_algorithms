@@ -14,11 +14,6 @@ def dijkstra(adjacency_matrix: list, start_node: int = 0):
         node.set_path([node.name])
         queue.append(node)
 
-        print("Queue: ")
-        for j in range(len(queue)):
-            print(queue[j].name, end=" ")
-        print()
-
         while len(queue) > 0:
 
             current_node = queue.pop(0)
@@ -31,22 +26,9 @@ def dijkstra(adjacency_matrix: list, start_node: int = 0):
             current_node.close()
             current_node.sort_connections()
 
-            print("Queue: ")
-            for j in range(len(queue)):
-                print(queue[j].name, end=" ")
-            print()
-
-            print_graph(nodes_arr)
-
             for i in current_node.connections.keys():
                 if not (nodes_arr[i.name].is_closed()): #and not (is_node_in(nodes_arr[i.name], queue)):
-                    print(i.name, len(nodes_arr), len(queue))
                     queue.append(nodes_arr[i.name])
-
-            print("Queue: ")
-            for j in range(len(queue)):
-                print(queue[j].name, end=" ")
-            print()
 
     queue = []
 

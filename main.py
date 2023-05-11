@@ -13,8 +13,8 @@ from visual import visual_graph, visual_matrix_johnson, visual_matrix_floyd
 algorithms = {0: 'Dijkstra', 1: 'Bellman_Ford', 2: 'Johnson', 3: 'Floyd'}
 algorithm = 3
 adjacency_matrix = adjacency_matrix4
-start_node = 0
-end_node = 8
+start_node = 2
+end_node = 0
 
 if algorithm == 0:
 

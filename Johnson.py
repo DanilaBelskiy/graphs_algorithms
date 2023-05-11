@@ -22,8 +22,6 @@ def johnson(adjacency_matrix: list):
 
     graph_to_return = make_graph(adjacency_matrix, 0)
 
-    print_graph(graph_to_return)
-
     helper = []
     for i in range(len(adjacency_matrix[0])):
         helper.append(0)
@@ -48,9 +46,6 @@ def johnson(adjacency_matrix: list):
         for j in range(len(graph)):
             final_matrix[i][j] = graph[j].weight
             path_matrix[i][j] = graph[j].path
-
-    print_adjacency_matrix(final_matrix)
-    print_adjacency_matrix(path_matrix)
 
     for i in range(len(final_matrix)):
         for j in range(len(final_matrix[0])):
